@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }} - GitHub Profile</title>
+    
+<link rel="stylesheet" href="result_css.css">
+</head>
+
+
+<body>
+
+<main class="profile-container">
+
+    <div class="top-section">
+
+        <img
+            src="{{ pic | default('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png') }}"
+            alt="Profile Avatar"
+            class="avatar"
+        >
+
+        <div class="content-col">
+
+            <h1 class="username">{{user}}</h1>
+
+            <p class="bio">
+                {{ bio | default('Exploring the open source universe.') }}
+            </p>
+
+            <ul class="details-list">
+
+                <li class="detail-item">
+                    <span class="detail-label">Name</span>
+                    <span class="detail-value">{{orgname}}</span>
+                </li>
+
+                <li class="detail-item">
+                    <span class="detail-label">👥 Followers</span>
+                    <span class="detail-value">{{flwr}}</span>
+                </li>
+
+                <li class="detail-item">
+                    <span class="detail-label">👤 Following</span>
+                    <span class="detail-value">{{flwing}}</span>
+                </li>
+
+                <li class="detail-item">
+                    <span class="detail-label">📦 Repositories</span>
+                    <span class="detail-value">{{public_repos}}</span>
+                </li>
+
+            </ul>
+
+            <a href="{{ url_for('index') }}" class="btn-back">
+                ← Search Another
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="chart-section">
+
+        <h2 class="chart-title">
+            Language Distribution
+        </h2>
+
+        <div class="datacard">
+            <canvas id="langChart"></canvas>
+        </div>
+
+    </div>
+
+</main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   <!--For Chart.js-->
+    <script>
+             const languages = {{ languages | tojson }};
+            
+             const labels =  Object.keys(languages)
+             const values = Object.values(languages)
+
+             new Chart (
+                document.getElementById("langChart"),
+                {
+                    type : "doughnut",
+                    data : {
+                        labels : labels,
+                        datasets : [{
+                            data : values   
+                        }]
+                    }
+                }
+             );
+
+    </script>
+
+</body>
+</html>
