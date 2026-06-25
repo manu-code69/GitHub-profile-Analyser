@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Analyzer</title>
+    <style>
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Combines a dark overlay with the background image for readability */
+            background-color: #050a15;
+            background-image: 
+                linear-gradient(rgba(5, 10, 21, 0.8), rgba(5, 10, 21, 0.8)), 
+                url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=3000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden; /* Prevents scrollbars */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Content Layer */
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        /* Massive Cinematic Heading */
+        h1 {
+            font-size: clamp(3rem, 6vw, 6rem); /* Scales with screen size */
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        /* Gradient text effect for the highlight */
+        .highlight {
+            background: linear-gradient(to right, #58a6ff, #a371f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Large, readable paragraph */
+        p {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: #c9d1d9;
+            line-height: 1.6;
+            max-width: 900px;
+            font-weight: 300;
+        }
+
+        /* Sleek, glowing pill button */
+        .btn-start {
+            display: inline-block;
+            text-decoration: none;
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.05);
+            border: 2px solid #58a6ff;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.15);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-start:hover {
+            background: #58a6ff;
+            color: #050a15;
+            box-shadow: 0 0 40px rgba(88, 166, 255, 0.6);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        .btn-start:active {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+
+    <main class="content">
+        <h1>Welcome to <br><span class="highlight">GitHub Profile Analyzer</span> 🚀</h1>
+        <p>Explore deep insights into any GitHub profile—from contribution patterns and repository analytics to technology stacks and developer activity.</p>
+        
+        <a href="{{ url_for('index') }}" class="btn-start">GET STARTED</a>
+    </main>
+
+</body>
+</html>

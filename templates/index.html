@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - GitHub Profile Analyzer</title>
+    
+    <style>
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Combines a dark overlay with the background image for readability */
+            background-color: #050a15;
+            background-image: 
+                linear-gradient(rgba(5, 10, 21, 0.8), rgba(5, 10, 21, 0.8)), 
+                url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=3000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Search Interface Container */
+        .search-container {
+            position: relative;
+            z-index: 1;
+            max-width: 550px;
+            width: 100%;
+            padding: 3rem 2.5rem;
+            background: rgba(22, 27, 34, 0.6); /* Slightly transparent dark card */
+            border: 1px solid rgba(88, 166, 255, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #58a6ff, #a371f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        p {
+            color: #8b949e;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* Form Layout */
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 1.2rem;
+        }
+
+        /* Input Field */
+        .github-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.2rem;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .github-input::placeholder {
+            color: #484f58;
+        }
+
+        /* Glowing effect on focus */
+        .github-input:focus {
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            padding: 16px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #050a15;
+            background: #58a6ff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #79c0ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(88, 166, 255, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+
+    <main class="search-container">
+        <h2>Let's Get Started 🚀</h2>
+        <p>Enter a GitHub username to pull repository data and activity logs.</p>
+        
+        <form class="search-form" action="{{ url_for('result') }}" method="POST" name = "username">
+            <input 
+                type="text" 
+                name="username" 
+                class="github-input" 
+                placeholder="e.g., torvalds" 
+                required 
+                autocomplete="off"
+            >
+            <button type="submit" class="btn-submit">Analyze Profile</button>
+        </form>
+        
+    </main>
+
+</body>
+</html>
